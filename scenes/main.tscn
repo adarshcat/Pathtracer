@@ -1,0 +1,175 @@
+[gd_scene load_steps=13 format=3 uid="uid://chlldlgncfiu4"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_ympyo"]
+[ext_resource type="PackedScene" uid="uid://dl1862w4j0vo" path="res://scenes/material.tscn" id="2_2gubr"]
+[ext_resource type="Texture2D" uid="uid://50rl3pcs0opi" path="res://hdri/kloofendal_43d_clear_2k.hdr" id="3_kh6p3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_41nxv"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_wyqlp"]
+material = SubResource("StandardMaterial3D_41nxv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t12rm"]
+cull_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0r27u"]
+material = SubResource("StandardMaterial3D_t12rm")
+
+[sub_resource type="QuadMesh" id="QuadMesh_at7a4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_b0you"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_o0elf"]
+panorama = ExtResource("3_kh6p3")
+
+[sub_resource type="Sky" id="Sky_2wmlh"]
+sky_material = SubResource("PanoramaSkyMaterial_o0elf")
+
+[sub_resource type="Environment" id="Environment_ty87h"]
+background_mode = 2
+background_energy_multiplier = 0.3
+sky = SubResource("Sky_2wmlh")
+glow_intensity = 2.74
+glow_bloom = 0.05
+glow_blend_mode = 0
+glow_hdr_threshold = 0.0
+glow_hdr_scale = 1.83
+glow_hdr_luminance_cap = 0.0
+glow_map_strength = 0.71
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_ympyo")
+
+[node name="sphereCont" type="Node3D" parent="."]
+
+[node name="sphere" type="MeshInstance3D" parent="sphereCont"]
+transform = Transform3D(0.912995, 0, 0, 0, 0.912995, 0, 0, 0, 0.912995, 0.299744, 0.417832, -2.56044)
+mesh = SubResource("SphereMesh_wyqlp")
+skeleton = NodePath("../..")
+metadata/mat = 1
+
+[node name="sphere4" type="MeshInstance3D" parent="sphereCont"]
+transform = Transform3D(0.729999, 0, 0, 0, 0.729999, 0, 0, 0, 0.729999, -0.755576, 0.260902, -2.46833)
+mesh = SubResource("SphereMesh_wyqlp")
+skeleton = NodePath("../..")
+metadata/mat = 3
+
+[node name="sphere3" type="MeshInstance3D" parent="sphereCont"]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0.597716, 2.14196, 0.408951)
+visible = false
+mesh = SubResource("SphereMesh_wyqlp")
+skeleton = NodePath("../..")
+metadata/mat = 10
+
+[node name="sphere2" type="MeshInstance3D" parent="sphereCont"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 2.659, 2.142, -3.578)
+visible = false
+mesh = SubResource("SphereMesh_wyqlp")
+skeleton = NodePath("../..")
+metadata/mat = 9
+
+[node name="planeCont" type="Node3D" parent="."]
+
+[node name="ground" type="MeshInstance3D" parent="planeCont"]
+transform = Transform3D(13.4285, 0, 0, 0, 13.4285, 0, 0, 0, 13.4285, 0, 0, 0)
+rotation_order = 0
+mesh = SubResource("PlaneMesh_0r27u")
+metadata/mat = 4
+
+[node name="top" type="MeshInstance3D" parent="planeCont"]
+transform = Transform3D(13.4285, 0, 0, 0, 13.4285, 0, 0, 0, 13.4285, 0, 2.81968, 0)
+rotation_order = 0
+mesh = SubResource("PlaneMesh_0r27u")
+metadata/mat = 4
+
+[node name="front" type="MeshInstance3D" parent="planeCont"]
+transform = Transform3D(-6.0884, 5.32265e-07, 0, 2.3266e-14, 2.66132e-07, 6.0884, 5.32265e-07, 6.0884, -2.66132e-07, 0, 1.9851, -4.26114)
+rotation_order = 0
+mesh = SubResource("PlaneMesh_0r27u")
+metadata/mat = 6
+
+[node name="back" type="MeshInstance3D" parent="planeCont"]
+transform = Transform3D(6.0884, 0, 0, 0, -2.66132e-07, 6.0884, 0, -6.0884, -2.66132e-07, 0, 1.9851, 1.06479)
+rotation_order = 0
+mesh = SubResource("PlaneMesh_0r27u")
+metadata/mat = 6
+
+[node name="left" type="MeshInstance3D" parent="planeCont"]
+transform = Transform3D(-2.66132e-07, 6.0884, 0, 2.66132e-07, 1.1633e-14, 6.0884, 6.0884, 2.66132e-07, -2.66132e-07, -1.81356, 1.9851, -4.05908)
+rotation_order = 0
+mesh = SubResource("PlaneMesh_0r27u")
+metadata/mat = 6
+
+[node name="right" type="MeshInstance3D" parent="planeCont"]
+transform = Transform3D(-2.66132e-07, 6.0884, 2.66132e-07, 0, -2.66132e-07, 6.0884, 6.0884, 2.66132e-07, 1.1633e-14, 3.44173, 1.9851, -4.05908)
+rotation_order = 0
+mesh = SubResource("PlaneMesh_0r27u")
+metadata/mat = 6
+
+[node name="polygons" type="Node3D" parent="."]
+
+[node name="lightPanel" type="MeshInstance3D" parent="polygons"]
+transform = Transform3D(0.737898, 0, 0, 0, -3.22545e-08, -0.737898, 0, 0.737898, -3.22545e-08, 0.785071, 2.80377, -2.82272)
+mesh = SubResource("QuadMesh_at7a4")
+metadata/mat = 5
+
+[node name="cube" type="MeshInstance3D" parent="polygons"]
+transform = Transform3D(0.385236, 0, -0.777241, 0, 1.33101, 0, 0.850905, 0, 0.351885, 1.63014, 0.669539, -2.74133)
+mesh = SubResource("BoxMesh_b0you")
+metadata/mat = 4
+
+[node name="materials" type="Node3D" parent="."]
+
+[node name="redDiff" parent="materials" instance=ExtResource("2_2gubr")]
+albedo = Color(1, 0.141176, 0.141176, 1)
+
+[node name="greenDiff" parent="materials" instance=ExtResource("2_2gubr")]
+albedo = Color(0.219608, 1, 0.258824, 1)
+
+[node name="blueDiff" parent="materials" instance=ExtResource("2_2gubr")]
+albedo = Color(0.101961, 0.101961, 1, 1)
+
+[node name="whiteDiff" parent="materials" instance=ExtResource("2_2gubr")]
+
+[node name="colLight" parent="materials" instance=ExtResource("2_2gubr")]
+albedo = Color(1, 0.752941, 0.431373, 1)
+emissionStr = 45.0
+
+[node name="mirror" parent="materials" instance=ExtResource("2_2gubr")]
+roughness = 0.0
+specularity = 1.0
+
+[node name="spec" parent="materials" instance=ExtResource("2_2gubr")]
+albedo = Color(1, 0.0901961, 0.0901961, 1)
+roughness = 0.2
+specularity = 0.06
+
+[node name="bulb1" parent="materials" instance=ExtResource("2_2gubr")]
+albedo = Color(0.0980392, 0, 1, 1)
+roughness = 0.0
+emissionStr = 5.0
+
+[node name="bulb2" parent="materials" instance=ExtResource("2_2gubr")]
+albedo = Color(1, 0, 0.584314, 1)
+roughness = 0.0
+emissionStr = 2.0
+
+[node name="bulb3" parent="materials" instance=ExtResource("2_2gubr")]
+albedo = Color(1, 0.282353, 0, 1)
+roughness = 0.0
+emissionStr = 1.0
+
+[node name="env" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ty87h")
+
+[node name="sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866026, 0, 0.499999, -0.353553, 0.707107, 0.612373, -0.353553, -0.707107, 0.612373, 5, 4, 0)
+visible = false
+shadow_enabled = true
+
+[node name="anchor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.90709)
+
+[node name="camera" type="Camera3D" parent="anchor"]
+transform = Transform3D(1, 4.16287e-08, 1.64149e-08, -4.35236e-08, 0.990061, 0.140642, -1.0397e-08, -0.140642, 0.990061, 0.469608, 1.61581, 2.7166)
+current = true

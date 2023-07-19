@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://21yny23tbkyb"]
+
+[ext_resource type="Script" path="res://scripts/render.gd" id="1_fl32x"]
+[ext_resource type="Texture2D" uid="uid://dtydej4l23cc8" path="res://icon.svg" id="2_f5gcm"]
+
+[node name="render" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fl32x")
+hdrPath = "res://hdri/table_mountain_1_2k.hdr"
+
+[node name="output" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_f5gcm")
+
+[node name="fpsLabel" type="Label" parent="."]
+layout_mode = 1
+offset_right = 101.0
+offset_bottom = 45.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "FPS: 60"
